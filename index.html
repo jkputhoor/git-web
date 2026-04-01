@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Broadcast Configs</title>
+    <title>Broadcast Dashboard</title>
 </head>
 <body>
 
-<h1>Broadcast Config List</h1>
+<h2>Available Broadcasts</h2>
 
-<ul>
-    <li><a href="india_broadcast.txt">India Broadcast</a></li>
-    <li><a href="uk_broadcast.txt">UK Broadcast</a></li>
-</ul>
+<button onclick="loadFile('india_broadcast.txt')">India</button>
+<button onclick="loadFile('uk_broadcast.txt')">UK</button>
+
+<pre id="content"></pre>
+
+<script>
+function loadFile(file) {
+    fetch(file)
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById('content').innerText = data;
+    });
+}
+</script>
 
 </body>
 </html>
